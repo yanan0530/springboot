@@ -27,8 +27,7 @@ public interface IncomeMapper {
     @Delete("delete from  income where id=#{id}")
     boolean delIncomeById(Integer id);
 
-    //获取今天所有数据
-
+    //获取总数据
     @Select("select datetime ,vegetable, SUM(money)  AS sum ,sum(weight) as sumweight  from income  group by vegetable")
     @Results({
             @Result(column = "datetime", property = "datetime", jdbcType = JdbcType.VARCHAR),
@@ -38,5 +37,18 @@ public interface IncomeMapper {
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER,id = true)
     })
     List<Income> getIncomeToday();
+
+    //获取年月数据
+    @Select("select name, date_format(datetime,'%Y-%m') as itimeYearMounth,vegetable, SUM(money)  AS sum ,sum(weight) as sumweight  from income,vegetables WHERE `income`.`vegetable`  = `vegetables` .`id` AND YEAR(datetime) IN (YEAR (NOW()),#{num}) group by MONTH (datetime)")
+    @Results({
+            @Result(column = "itimeYearMounth",property = "itimeYearMounth",jdbcType = JdbcType.DATE),
+            @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "datetime", property = "datetime", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "vegetable", property = "vegetable", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "sum", property = "sum", jdbcType = JdbcType.INTEGER),
+            @Result(column = "sumweight", property = "sumweight", jdbcType = JdbcType.INTEGER),
+            @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER, id = true)
+    })
+    List<Income> getIncomeYearMounth(Integer num);
 
 }

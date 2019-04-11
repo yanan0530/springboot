@@ -1,5 +1,7 @@
 package com.example.datajdbc.pojo;
 
+import java.util.Date;
+
 //收入单据
 public class Income {
     private Integer id;
@@ -10,6 +12,24 @@ public class Income {
     private Float unitprice;
     private Integer sum;
     private Integer sumweight;
+    private String name;//蔬菜中文名称
+    private Date itimeYearMounth;
+
+    public Date getItimeYearMounth() {
+        return itimeYearMounth;
+    }
+
+    public void setItimeYearMounth(Date itimeYearMounth) {
+        this.itimeYearMounth = itimeYearMounth;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getSumweight() {
         return sumweight;
