@@ -9,6 +9,15 @@ public class Income {
     private Float weight;
     private Float unitprice;
     private Integer sum;
+    private Integer sumweight;
+
+    public Integer getSumweight() {
+        return sumweight;
+    }
+
+    public void setSumweight(Integer sumweight) {
+        this.sumweight = sumweight;
+    }
 
     public Integer getSum() {
         return sum;

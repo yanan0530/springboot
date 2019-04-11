@@ -29,11 +29,12 @@ public interface IncomeMapper {
 
     //获取今天所有数据
 
-    @Select("select datetime ,vegetable, SUM(money)  AS sum   from income  group by vegetable")
+    @Select("select datetime ,vegetable, SUM(money)  AS sum ,sum(weight) as sumweight  from income  group by vegetable")
     @Results({
             @Result(column = "datetime", property = "datetime", jdbcType = JdbcType.VARCHAR),
             @Result(column = "vegetable", property = "vegetable", jdbcType = JdbcType.VARCHAR),
             @Result(column = "sum", property = "sum", jdbcType = JdbcType.INTEGER),
+            @Result(column = "sumweight", property = "sumweight", jdbcType = JdbcType.INTEGER),
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER,id = true)
     })
     List<Income> getIncomeToday();
