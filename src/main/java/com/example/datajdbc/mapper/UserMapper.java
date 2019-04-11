@@ -3,6 +3,9 @@ package com.example.datajdbc.mapper;
 import com.example.datajdbc.pojo.Users;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface UserMapper {
 
@@ -14,9 +17,12 @@ public interface UserMapper {
     public Users getUserById(Integer id);
 
     @Delete("delete from users where id=#{id}")
-    public int deleteUserById(Integer id);
+    boolean deleteUserById(Integer id);
 
     @Update("update users set name=#{name} where id=#{id}")
     public int updateUser(Users users);
+
+    @Select("select * from users")
+    List<Users> getUserList();
 
 }
