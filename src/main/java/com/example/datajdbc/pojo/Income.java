@@ -13,13 +13,13 @@ public class Income {
     private Integer sum;
     private Integer sumweight;
     private String name;//蔬菜中文名称
-    private Date itimeYearMounth;
+    private String itimeYearMounth;
 
-    public Date getItimeYearMounth() {
+    public String getItimeYearMounth() {
         return itimeYearMounth;
     }
 
-    public void setItimeYearMounth(Date itimeYearMounth) {
+    public void setItimeYearMounth(String itimeYearMounth) {
         this.itimeYearMounth = itimeYearMounth;
     }
 

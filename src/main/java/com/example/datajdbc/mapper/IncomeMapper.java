@@ -4,14 +4,13 @@ import com.example.datajdbc.pojo.Income;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
-import javax.swing.*;
 import java.util.List;
 
 @Mapper
 public interface IncomeMapper {
 
     //查看
-    @Select("select * from income")
+    @Select("select * from income ORDER BY `datetime`  ASC ")
     List<Income> getIncomeList();
 
     //添加
@@ -28,20 +27,16 @@ public interface IncomeMapper {
     boolean delIncomeById(Integer id);
 
     //获取总数据
-    @Select("select datetime ,vegetable, SUM(money)  AS sum ,sum(weight) as sumweight  from income  group by vegetable")
+    @Select("select name,\n" +
+            "       datetime as datetime,\n" +
+            "       vegetable,\n" +
+            "       SUM(money) AS sum,\n" +
+            "       sum(weight) as sumweight\n" +
+            "  from income,\n" +
+            "       vegetables\n" +
+            " WHERE `income`.`vegetable`= `vegetables` .`id`\n" +
+            " group by vegetable")
     @Results({
-            @Result(column = "datetime", property = "datetime", jdbcType = JdbcType.VARCHAR),
-            @Result(column = "vegetable", property = "vegetable", jdbcType = JdbcType.VARCHAR),
-            @Result(column = "sum", property = "sum", jdbcType = JdbcType.INTEGER),
-            @Result(column = "sumweight", property = "sumweight", jdbcType = JdbcType.INTEGER),
-            @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER,id = true)
-    })
-    List<Income> getIncomeToday();
-
-    //获取年月数据
-    @Select("select name, date_format(datetime,'%Y-%m') as itimeYearMounth,vegetable, SUM(money)  AS sum ,sum(weight) as sumweight  from income,vegetables WHERE `income`.`vegetable`  = `vegetables` .`id` AND YEAR(datetime) IN (YEAR (NOW()),#{num}) group by MONTH (datetime)")
-    @Results({
-            @Result(column = "itimeYearMounth",property = "itimeYearMounth",jdbcType = JdbcType.DATE),
             @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
             @Result(column = "datetime", property = "datetime", jdbcType = JdbcType.VARCHAR),
             @Result(column = "vegetable", property = "vegetable", jdbcType = JdbcType.VARCHAR),
@@ -49,6 +44,31 @@ public interface IncomeMapper {
             @Result(column = "sumweight", property = "sumweight", jdbcType = JdbcType.INTEGER),
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER, id = true)
     })
-    List<Income> getIncomeYearMounth(Integer num);
+    List<Income> getIncomeAll();
+
+    //获取年月数据
+    @Select("select name,\n" +
+            "       date_format(datetime,'%Y-%m') as datetime,\n" +
+            "       SUM(money) AS sum,\n" +
+            "       sum(weight) as sumweight,\n" +
+            "       round(AVG(unitprice), 2) as unitprice\n" +
+            "  from income,\n" +
+            "       vegetables\n" +
+            " WHERE `income`.`vegetable`= `vegetables` .`id`\n" +
+            "   AND YEAR(datetime) IN(#{year})\n" +
+            " group by  MONTH (datetime)")
+    @Results({
+            @Result(column = "itimeYearMounth", property = "itimeYearMounth", jdbcType = JdbcType.DATE),
+            @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "datetime", property = "datetime", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "vegetable", property = "vegetable", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "sum", property = "sum", jdbcType = JdbcType.INTEGER),
+            @Result(column = "sumweight", property = "sumweight", jdbcType = JdbcType.INTEGER),
+            @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER, id = true)
+    })
+    List<Income> getIncomeYearMounth(Integer year);
+
+    @SelectProvider(type = IncomeMapperSqlProvider.class,method = "selectAllByConditions")
+    List<Income> getIncomeAllByConditions(String type, String conditions);
 
 }

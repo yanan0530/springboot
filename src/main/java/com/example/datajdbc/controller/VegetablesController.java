@@ -21,9 +21,9 @@ public class VegetablesController {
 
     @PostMapping("/vege")
     public Boolean insetVege(@RequestBody Vegetables vegetables) {
-        if( vegetables.getId() == null){
+        if (vegetables.getId() == null) {
             vegetablesMapper.InsetVege(vegetables);
-        }else{
+        } else {
             vegetablesMapper.upVegeById(vegetables);
         }
         return true;
@@ -33,8 +33,9 @@ public class VegetablesController {
     public Boolean delVege(@RequestParam("id") Integer id) {
         return vegetablesMapper.delVegetById(id);
     }
+
     @GetMapping("/vegeinit")
-    public List<Vegetables> initVege(){
+    public List<Vegetables> initVege() {
         return vegetablesMapper.vegStateList();
     }
 }

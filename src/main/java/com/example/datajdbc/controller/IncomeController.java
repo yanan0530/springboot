@@ -18,11 +18,12 @@ public class IncomeController {
     public List<Income> getIncomeList() {
         return incomeMapper.getIncomeList();
     }
+
     @PostMapping("/incomesave")
     public boolean insertIncome(@RequestBody Income income) {
         Date date = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        if(income.getDatetime()==null){
+        if (income.getDatetime() == null) {
             income.setDatetime(df.format(date));
         }
         if (income.getId() == null) {
@@ -32,13 +33,25 @@ public class IncomeController {
         }
         return true;
     }
+
     @GetMapping("/delincome")
-    public boolean  delIncomeById(@RequestParam("id") Integer id){
+    public boolean delIncomeById(@RequestParam("id") Integer id) {
         incomeMapper.delIncomeById(id);
-        return  true;
+        return true;
     }
-    @GetMapping("/incometoday")
-    public List<Income> getIncomeToday(){
-        return incomeMapper.getIncomeToday();
+
+    @GetMapping("/incomeall")
+    public List<Income> getIncomeAll() {
+        return incomeMapper.getIncomeAll();
+    }
+
+    @GetMapping("/incomeyear")
+    public List<Income> getIncomeYear(@RequestParam("year") Integer year) {
+        return incomeMapper.getIncomeYearMounth(year);
+    }
+
+    @GetMapping("incomes")
+    public List<Income> getIncomeAllByConditions(@RequestParam(value = "type", defaultValue = "year") String type, @RequestParam(value = "date",defaultValue = "2019") String condistion) {
+        return incomeMapper.getIncomeAllByConditions(type, condistion);
     }
 }
