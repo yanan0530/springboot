@@ -10,7 +10,7 @@ import java.util.List;
 public interface IncomeMapper {
 
     //查看
-    @Select("select * from income ORDER BY `datetime`  ASC ")
+    @Select("SELECT income.`id` ,datetime,money,weight,unitprice,name FROM income,vegetables WHERE `income`.`vegetable` =`vegetables` .id ORDER BY datetime ASC ")
     List<Income> getIncomeList();
 
     //添加

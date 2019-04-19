@@ -51,7 +51,7 @@ public class IncomeController {
     }
 
     @GetMapping("incomes")
-    public List<Income> getIncomeAllByConditions(@RequestParam(value = "type", defaultValue = "year") String type, @RequestParam(value = "date",defaultValue = "2019") String condistion) {
+    public List<Income> getIncomeAllByConditions(@RequestParam(value = "type", defaultValue = "year") String type, @RequestParam(value = "date", defaultValue = "2019") String condistion) {
         return incomeMapper.getIncomeAllByConditions(type, condistion);
     }
 }
