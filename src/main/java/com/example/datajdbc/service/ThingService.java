@@ -8,4 +8,5 @@ public interface ThingService {
     List<Thing> getThingsAll();
     void addTing(Thing thing);
     void delThing(Integer id);
+    void updateThing(Thing thing);
 }

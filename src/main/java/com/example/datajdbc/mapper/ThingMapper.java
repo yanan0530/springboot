@@ -16,4 +16,8 @@ public interface ThingMapper {
 
     @Delete("delete from thing where id=#{id}")
     void delThing(Integer id);
+
+    //更新
+    @Update("update thing set name=#{name} where id=#{id}")
+    void updateThing(Thing thing);
 }

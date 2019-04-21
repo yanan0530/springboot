@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@RequestMapping("/yn")
 public class IncomeController {
     @Autowired
     IncomeMapper incomeMapper;

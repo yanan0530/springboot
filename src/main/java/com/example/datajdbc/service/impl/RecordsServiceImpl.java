@@ -1,0 +1,34 @@
+package com.example.datajdbc.service.impl;
+
+import com.example.datajdbc.mapper.RecordsMapper;
+import com.example.datajdbc.pojo.Records;
+import com.example.datajdbc.service.RecordsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class RecordsServiceImpl implements RecordsService {
+    @Autowired
+    private RecordsMapper recordsMapper;
+    @Override
+    public List<Records> getRecordsAll() {
+        return recordsMapper.getRecordsAll();
+    }
+
+    @Override
+    public void insertRecords(Records records) {
+        recordsMapper.saveRecords(records);
+    }
+
+    @Override
+    public void delRecords(Integer id) {
+        recordsMapper.delRecords(id);
+    }
+
+    @Override
+    public void updateRecords(Records records) {
+        recordsMapper.updateRecordsById(records);
+    }
+}

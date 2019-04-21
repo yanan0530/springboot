@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/yn")
 public class ThingController {
 
     @Autowired
@@ -23,7 +24,7 @@ public class ThingController {
         if (thing.getId()==null){
             thingService.addTing(thing);
         }else {
-
+            thingService.updateThing(thing);
         }
         return true;
     }

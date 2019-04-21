@@ -1,7 +1,5 @@
 package com.example.datajdbc.pojo;
 
-import java.util.Date;
-
 //收入单据
 public class Income {
     private Integer id;

@@ -27,4 +27,9 @@ public class ThingServiceImpl implements ThingService {
     public void delThing(Integer id) {
         thingMapper.delThing(id);
     }
+
+    @Override
+    public void updateThing(Thing thing) {
+        thingMapper.updateThing(thing);
+    }
 }

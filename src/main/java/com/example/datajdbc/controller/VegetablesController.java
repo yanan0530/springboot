@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/yn")
 public class VegetablesController {
     @Autowired
     VegetablesMapper vegetablesMapper;
