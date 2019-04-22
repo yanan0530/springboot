@@ -3,13 +3,14 @@ package com.example.datajdbc.mapper;
 import com.example.datajdbc.pojo.Records;
 import org.apache.ibatis.annotations.*;
 
+
 import java.util.List;
 
 @Mapper
 public interface RecordsMapper {
 
     //查看所有
-    @Select("select * from records")
+    @Select("select * from records,projects,vegetables where records.projectid=projects.id and projects.vegeid=vegetables.id")
     List<Records> getRecordsAll();
 
     @Options(useGeneratedKeys = true ,keyProperty = "id")

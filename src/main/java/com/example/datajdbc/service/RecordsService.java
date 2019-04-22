@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface RecordsService {
     List<Records> getRecordsAll();
+
     void insertRecords(Records records);
 
     void delRecords(Integer id);

@@ -20,6 +20,7 @@ public class RecordsController {
 
     @PostMapping("/save")
     public boolean saveRecords(@RequestBody List<Records> records) {
+        System.out.println(records);
         for(int i=0;i<records.size();i++){
             if ( records.get(i).getId()==null) {
                 recordsService.insertRecords(records.get(i));
@@ -29,6 +30,7 @@ public class RecordsController {
         }
         return true;
     }
+
     @GetMapping("/del")
     public boolean delRecordsByid(@RequestParam("id") Integer id){
         recordsService.delRecords(id);
