@@ -34,4 +34,9 @@ public class RecordsServiceImpl implements RecordsService {
     public void updateRecords(Records records) {
         recordsMapper.updateRecordsById(records);
     }
+
+    @Override
+    public List<Records> getRecordsByProjectId(Integer id) {
+        return recordsMapper.getRecordsByProjectId(id);
+    }
 }

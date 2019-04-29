@@ -4,6 +4,7 @@ import com.example.datajdbc.pojo.Users;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface UserMapper {
@@ -24,4 +25,6 @@ public interface UserMapper {
     @Select("select * from users")
     List<Users> getUserList();
 
+    @Select("select areaname from area")
+    List<Map> getUserListM();
 }

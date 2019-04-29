@@ -1,95 +1,77 @@
 package com.example.datajdbc.pojo;
 
-//收入单据
+
 public class Income {
-    private Integer id;
-    private String datetime;
-    private Integer vegetable;
-    private Float money;
-    private Float weight;
-    private Float unitprice;
-    private Integer sum;
-    private Integer sumweight;
-    private String name;//蔬菜中文名称
-    private String itimeYearMounth;
 
-    public String getItimeYearMounth() {
-        return itimeYearMounth;
-    }
+  private Integer id;
+  private String datetime;
+  private Integer vegetable;
+  private double money;
+  private double weight;
+  private double unitprice;
+  private Integer projectId;
 
-    public void setItimeYearMounth(String itimeYearMounth) {
-        this.itimeYearMounth = itimeYearMounth;
-    }
 
-    public String getName() {
-        return name;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public Integer getSumweight() {
-        return sumweight;
-    }
 
-    public void setSumweight(Integer sumweight) {
-        this.sumweight = sumweight;
-    }
+  public String getDatetime() {
+    return datetime;
+  }
 
-    public Integer getSum() {
-        return sum;
-    }
+  public void setDatetime(String datetime) {
+    this.datetime = datetime;
+  }
 
-    public void setSum(Integer sum) {
-        this.sum = sum;
-    }
 
-    public String getDatetime() {
-        return datetime;
-    }
+  public Integer getVegetable() {
+    return vegetable;
+  }
 
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
-    }
+  public void setVegetable(Integer vegetable) {
+    this.vegetable = vegetable;
+  }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public double getMoney() {
+    return money;
+  }
 
-    public Integer getVegetable() {
-        return vegetable;
-    }
+  public void setMoney(double money) {
+    this.money = money;
+  }
 
-    public void setVegetable(Integer vegetable) {
-        this.vegetable = vegetable;
-    }
 
-    public Float getMoney() {
-        return money;
-    }
+  public double getWeight() {
+    return weight;
+  }
 
-    public void setMoney(Float money) {
-        this.money = money;
-    }
+  public void setWeight(double weight) {
+    this.weight = weight;
+  }
 
-    public Float getWeight() {
-        return weight;
-    }
 
-    public void setWeight(Float weight) {
-        this.weight = weight;
-    }
+  public double getUnitprice() {
+    return unitprice;
+  }
 
-    public Float getUnitprice() {
-        return unitprice;
-    }
+  public void setUnitprice(double unitprice) {
+    this.unitprice = unitprice;
+  }
 
-    public void setUnitprice(Float unitprice) {
-        this.unitprice = unitprice;
-    }
+
+  public Integer getProjectId() {
+    return projectId;
+  }
+
+  public void setProjectId(Integer projectId) {
+    this.projectId = projectId;
+  }
+
 }

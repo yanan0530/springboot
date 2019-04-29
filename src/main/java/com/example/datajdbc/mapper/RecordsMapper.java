@@ -23,4 +23,9 @@ public interface RecordsMapper {
     //更新
     @Update("update records set areaid=#{areaid} where id=#{id}")
     void updateRecordsById(Records records);
+
+
+    //根据项目Id 获取所有操作记录
+    @Select("select * from records where projectid=#{id}")
+    List<Records> getRecordsByProjectId(Integer id);
 }

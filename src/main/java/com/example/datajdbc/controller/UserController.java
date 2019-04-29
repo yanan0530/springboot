@@ -40,4 +40,8 @@ public class UserController {
         return  userMapper.deleteUserById(id);
     }
 
+    @GetMapping("/mapuser")
+    public  List<?> getUserA(){
+        return userMapper.getUserListM();
+    }
 }

@@ -12,4 +12,6 @@ public interface RecordsService {
     void delRecords(Integer id);
 
     void updateRecords(Records records);
+
+    List<Records> getRecordsByProjectId(Integer id);
 }

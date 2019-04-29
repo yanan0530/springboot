@@ -36,4 +36,8 @@ public class RecordsController {
         recordsService.delRecords(id);
         return true;
     }
+    @GetMapping("/projectid")
+    public List<Records> getRecordsByProjectId(@RequestParam("id") Integer id){
+        return recordsService.getRecordsByProjectId(id);
+    }
 }
