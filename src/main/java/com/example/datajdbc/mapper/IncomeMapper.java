@@ -10,12 +10,12 @@ import java.util.List;
 public interface IncomeMapper {
 
     //查看
-    @Select("SELECT income.`id` ,datetime,money,weight,unitprice,name FROM income,vegetables WHERE `income`.`vegetable` =`vegetables` .id ORDER BY datetime ASC ")
+    @Select("SELECT income.`id` ,datetime,money,weight,unitprice,name,project_id FROM income,vegetables WHERE `income`.`vegetable` =`vegetables` .id ORDER BY datetime ASC ")
     List<Income> getIncomeList();
 
     //添加
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into income(datetime,vegetable,money,weight,unitprice) values(#{datetime},#{vegetable},#{money},#{weight},#{unitprice})")
+    @Insert("insert into income(datetime,vegetable,money,weight,unitprice,project_id) values(#{datetime},#{vegetable},#{money},#{weight},#{unitprice},#{projectId})")
     void insertIncome(Income income);
 
     //更新

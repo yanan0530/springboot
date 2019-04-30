@@ -2,6 +2,7 @@ package com.example.datajdbc.controller;
 
 import com.example.datajdbc.mapper.IncomeMapper;
 import com.example.datajdbc.pojo.Income;
+import com.example.datajdbc.pojo.Projects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +24,18 @@ public class IncomeController {
     @PostMapping("/incomesave")
     public boolean insertIncome(@RequestBody Income income) {
         Date date = new Date();
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         if (income.getDatetime() == null) {
             income.setDatetime(df.format(date));
         }
         if (income.getId() == null) {
-            incomeMapper.insertIncome(income);
+            System.err.println(income);
+            Projects projects = new Projects();
+            projects.setId(income.getProjectId());
+
+            //  incomeMapper.insertIncome(income);
+
         } else {
             incomeMapper.upIncomeById(income);
         }

@@ -9,7 +9,18 @@ import java.util.List;
 public interface ProjectsMapper {
 
     //查看所有
-    @Select("select * from projects,vegetables where projects.vegeid=vegetables.id")
+    @Select("select sum(income.money)as sum,\n" +
+            "       projects.id,\n" +
+            "       projects.vegeid,\n" +
+            "       projects.createtime,\n" +
+            "       projects.endtime,\n" +
+            "       projects.state,\n" +
+            "       sum(income.weight) as weight,\n" +
+            "       round(avg(income.unitprice),2) as average,vegetables.name\n" +
+            "from projects projects\n" +
+            "left join  income income on income.project_id = projects.id\n" +
+            "left join vegetables vegetables on  projects.vegeid=vegetables.id\n" +
+            "group by projects.id DESC")
     List<Projects> getProjectsAll();
 
     @Options(useGeneratedKeys = true, keyProperty = "id")

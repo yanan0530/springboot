@@ -10,7 +10,24 @@ public class Income {
   private double weight;
   private double unitprice;
   private Integer projectId;
+  private String name;
+  private double sum;
 
+  public double getSum() {
+    return sum;
+  }
+
+  public void setSum(double sum) {
+    this.sum = sum;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
 
   public Integer getId() {
     return id;
@@ -74,4 +91,16 @@ public class Income {
     this.projectId = projectId;
   }
 
+  @Override
+  public String toString() {
+    return "Income{" +
+            "id=" + id +
+            ", datetime='" + datetime + '\'' +
+            ", vegetable=" + vegetable +
+            ", money=" + money +
+            ", weight=" + weight +
+            ", unitprice=" + unitprice +
+            ", projectId=" + projectId +
+            '}';
+  }
 }
