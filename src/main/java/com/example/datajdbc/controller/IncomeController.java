@@ -30,11 +30,7 @@ public class IncomeController {
             income.setDatetime(df.format(date));
         }
         if (income.getId() == null) {
-            System.err.println(income);
-            Projects projects = new Projects();
-            projects.setId(income.getProjectId());
-
-            //  incomeMapper.insertIncome(income);
+            incomeMapper.insertIncome(income);
 
         } else {
             incomeMapper.upIncomeById(income);

@@ -16,7 +16,6 @@ public class VegetablesController {
     @GetMapping("/vegelist")
     public List<Vegetables> getVegeList() {
         List<Vegetables> list = vegetablesMapper.VegList();
-        System.err.println(list);
         return list;
     }
 
