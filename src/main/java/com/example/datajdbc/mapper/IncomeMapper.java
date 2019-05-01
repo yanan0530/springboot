@@ -10,7 +10,7 @@ import java.util.List;
 public interface IncomeMapper {
 
     //查看
-    @Select("SELECT income.`id` ,datetime,money,weight,unitprice,name,project_id FROM income,vegetables WHERE `income`.`vegetable` =`vegetables` .id ORDER BY datetime ASC ")
+    @Select("SELECT income.`id` ,datetime,money,weight,unitprice,name,project_id FROM income,vegetables WHERE `income`.`vegetable` =`vegetables` .id ORDER BY datetime DESC ")
     List<Income> getIncomeList();
 
     //添加
@@ -19,7 +19,7 @@ public interface IncomeMapper {
     void insertIncome(Income income);
 
     //更新
-    @Update("update income set vegetable=#{vegetable},money=#{money},weight=#{weight},unitprice=#{unitprice} where id=#{id}")
+    @Update("update income set datetime=#{datetime},vegetable=#{vegetable},money=#{money},weight=#{weight},unitprice=#{unitprice},project_id=#{projectId} where id=#{id}")
     boolean upIncomeById(Income income);
 
     //删除

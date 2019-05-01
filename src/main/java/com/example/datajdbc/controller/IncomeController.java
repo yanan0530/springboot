@@ -31,7 +31,6 @@ public class IncomeController {
         }
         if (income.getId() == null) {
             incomeMapper.insertIncome(income);
-
         } else {
             incomeMapper.upIncomeById(income);
         }

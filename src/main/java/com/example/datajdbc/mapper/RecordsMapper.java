@@ -10,7 +10,7 @@ import java.util.List;
 public interface RecordsMapper {
 
     //查看所有
-    @Select("select * from records,projects,vegetables where records.projectid=projects.id and projects.vegeid=vegetables.id")
+    @Select("select * from records,projects,vegetables where records.projectid=projects.id and projects.vegeid=vegetables.id order by records.createtime desc")
     List<Records> getRecordsAll();
 
     @Options(useGeneratedKeys = true ,keyProperty = "id")
@@ -24,8 +24,7 @@ public interface RecordsMapper {
     @Update("update records set areaid=#{areaid} where id=#{id}")
     void updateRecordsById(Records records);
 
-
     //根据项目Id 获取所有操作记录
-    @Select("select * from records where projectid=#{id}")
+    @Select("select * from records where projectid=#{id} order by createtime asc")
     List<Records> getRecordsByProjectId(Integer id);
 }
