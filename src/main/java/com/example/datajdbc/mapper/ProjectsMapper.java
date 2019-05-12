@@ -15,7 +15,7 @@ public interface ProjectsMapper {
             "       projects.createtime,\n" +
             "       projects.endtime,\n" +
             "       projects.state,\n" +
-            "       sum(income.weight) as weight,\n" +
+            "       sum(BINARY (income.weight)) as weight,\n" +
             "       round(avg(income.unitprice),2) as average,vegetables.name\n" +
             "from projects projects\n" +
             "left join  income income on income.project_id = projects.id\n" +

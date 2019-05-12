@@ -848,105 +848,106 @@
       <DataType>float|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="196" parent="139" name="PRIMARY">
+    <column id="196" parent="139" name="project_id">
+      <Position>7</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="197" parent="139" name="project_id">
+      <ColNames>project_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="198" parent="139" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="197" parent="140" name="id">
+    <column id="199" parent="140" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="198" parent="140" name="vegeid">
+    <column id="200" parent="140" name="vegeid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="199" parent="140" name="createtime">
+    <column id="201" parent="140" name="createtime">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="200" parent="140" name="endtime">
+    <column id="202" parent="140" name="endtime">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="201" parent="140" name="state">
+    <column id="203" parent="140" name="state">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="202" parent="140" name="sum">
+    <column id="204" parent="140" name="sum">
       <Position>6</Position>
       <DataType>double(12,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="203" parent="140" name="weight">
+    <column id="205" parent="140" name="weight">
       <Position>7</Position>
       <DataType>double(12,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="204" parent="140" name="average">
+    <column id="206" parent="140" name="average">
       <Position>8</Position>
       <DataType>double(12,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="205" parent="140" name="vegeid">
+    <index id="207" parent="140" name="vegeid">
       <ColNames>vegeid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="206" parent="140" name="PRIMARY">
+    <key id="208" parent="140" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="207" parent="141" name="id">
+    <column id="209" parent="141" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="208" parent="141" name="projectid">
+    <column id="210" parent="141" name="projectid">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="209" parent="141" name="createtime">
+    <column id="211" parent="141" name="createtime">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="210" parent="141" name="thingid">
+    <column id="212" parent="141" name="thingid">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="211" parent="141" name="remarks">
+    <column id="213" parent="141" name="remarks">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="212" parent="141" name="areaid">
+    <column id="214" parent="141" name="areaid">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="213" parent="141" name="projectid">
+    <index id="215" parent="141" name="projectid">
       <ColNames>projectid</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="214" parent="141" name="thingid">
-      <ColNames>thingid</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="215" parent="141" name="areaid">
-      <ColNames>areaid</ColNames>
       <Type>btree</Type>
     </index>
     <key id="216" parent="141" name="PRIMARY">
