@@ -10,7 +10,7 @@ public class IncomeMapperSqlProvider {
     public String selectAllByConditions(String type, String conditions){
         SQL sql = new SQL();
         sql.SELECT(selectHanldeConditions(type));
-        sql.SELECT("SUM(money) AS sum,sum(weight) as weight,round(AVG(unitprice), 2) as unitprice,name");
+        sql.SELECT("SUM(money) AS sum,SUM(BINARY (weight)) as weight,round(AVG(unitprice), 2) as unitprice,name");
         sql.FROM("income,vegetables");
         sql.WHERE("`income`.`vegetable`= `vegetables` .`id`");
         sql.WHERE(whereHanldeConditions(type,conditions));
@@ -45,10 +45,10 @@ public class IncomeMapperSqlProvider {
         String groupBy=new String();
         switch (type){
             case YEAR:
-                groupBy="MONTH (datetime)";
+                groupBy="MONTH (datetime),project_id";
                 break;
             case MOUNTH:
-                groupBy="datetime";
+                groupBy="datetime,project_id";
                 break;
         }
         return groupBy;
