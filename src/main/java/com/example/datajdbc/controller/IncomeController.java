@@ -2,7 +2,6 @@ package com.example.datajdbc.controller;
 
 import com.example.datajdbc.mapper.IncomeMapper;
 import com.example.datajdbc.pojo.Income;
-import com.example.datajdbc.pojo.Projects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,5 +55,17 @@ public class IncomeController {
     @GetMapping("incomes")
     public List<Income> getIncomeAllByConditions(@RequestParam(value = "type", defaultValue = "year") String type, @RequestParam(value = "date", defaultValue = "2019") String condistion) {
         return incomeMapper.getIncomeAllByConditions(type, condistion);
+    }
+    @GetMapping("/income/mouthday")
+    public String[] getIncomeMounthDay(@RequestParam(value = "id",defaultValue = "2") Integer id){
+        return incomeMapper.getIncomeMounthDay(id);
+    }
+    @GetMapping("/income/years")
+    public String[] getIncomeYears(@RequestParam(value = "id",defaultValue = "2") Integer id){
+        return incomeMapper.getIncomeYears(id);
+    }
+    @GetMapping("/income/datamountday")
+    public List<Income> getIncomeDataMountDay(@RequestParam(value = "id",defaultValue = "2") Integer id){
+        return incomeMapper.getIncomeDataMountDay(id);
     }
 }

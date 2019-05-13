@@ -70,5 +70,20 @@ public interface IncomeMapper {
 
     @SelectProvider(type = IncomeMapperSqlProvider.class,method = "selectAllByConditions")
     List<Income> getIncomeAllByConditions(String type, String conditions);
-
+    //返回进货单:年月
+    @Select("select date_format(income.datetime,\"%m-%d\") as datetime from income where income.vegetable=#{id} group by datetime order by date_format(income.datetime,\"%m-%d\") ASC")
+    String[] getIncomeMounthDay(Integer id);
+    //返回进货单:年
+    @Select("select date_format(income.datetime,\"%Y\") as datetime from income where income.vegetable=#{id} group by date_format(income.datetime,\"%Y\") order by date_format(income.datetime,\"%Y\") ASC")
+    String[] getIncomeYears(Integer id);
+    //进货单 按照日期返回进货单信息
+    @Select("select date_format(income.datetime,\"%Y-%m-%d\") as datetime,\n" +
+            "       vegetables.name,\n" +
+            "       income.vegetable,\n" +
+            "       avg(BINARY (income.unitprice)) as unitprice\n" +
+            "from income,vegetables\n" +
+            "where income.vegetable=vegetables.id and income.vegetable=#{id}\n" +
+            "group by datetime,vegetables.name\n" +
+            "order by date_format(income.datetime,\"%m-%d\") ASC;")
+    List<Income> getIncomeDataMountDay(Integer id);
 }
